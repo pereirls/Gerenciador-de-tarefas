@@ -16,9 +16,7 @@ public class ServicoUsuario {
     private BCryptPasswordEncoder passwordEncoder;
 
     public Usuario econtrarPorEmail(String email) {
-
         return repositorioUsuario.findByEmail(email);
-
     }
 
     public void salvar(Usuario usuario) {
