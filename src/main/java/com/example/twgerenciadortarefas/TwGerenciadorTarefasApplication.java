@@ -7,9 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example.controllers")
-@EntityScan("com.example.models")
-@EnableJpaRepositories("com.example.repositories")
 public class TwGerenciadorTarefasApplication {
 
  	public static void main(String[] args) {

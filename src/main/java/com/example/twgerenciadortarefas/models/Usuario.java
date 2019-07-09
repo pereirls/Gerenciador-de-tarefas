@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.twgerenciadortarefas.models;
 
 import javax.persistence.*;
 

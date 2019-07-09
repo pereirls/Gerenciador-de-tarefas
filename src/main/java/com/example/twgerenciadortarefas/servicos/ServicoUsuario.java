@@ -1,7 +1,7 @@
-package com.example.servicos;
+package com.example.twgerenciadortarefas.servicos;
 
-import com.example.models.Usuario;
-import com.example.repositories.RepositorioUsuario;
+import com.example.twgerenciadortarefas.models.Usuario;
+import com.example.twgerenciadortarefas.repositories.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

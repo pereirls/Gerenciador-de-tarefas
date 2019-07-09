@@ -1,6 +1,6 @@
-package com.example.repositories;
+package com.example.twgerenciadortarefas.repositories;
 
-import com.example.models.Tarefa;
+import com.example.twgerenciadortarefas.models.Tarefa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

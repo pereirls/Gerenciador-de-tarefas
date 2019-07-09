@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.twgerenciadortarefas.models;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;

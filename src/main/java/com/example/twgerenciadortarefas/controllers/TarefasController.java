@@ -1,7 +1,7 @@
-package com.example.controllers;
+package com.example.twgerenciadortarefas.controllers;
 
-import com.example.models.Tarefa;
-import com.example.repositories.RepositorioTarefa;
+import com.example.twgerenciadortarefas.models.Tarefa;
+import com.example.twgerenciadortarefas.repositories.RepositorioTarefa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
