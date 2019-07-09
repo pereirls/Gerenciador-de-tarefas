@@ -1,6 +1,9 @@
 package com.example.twgerenciadortarefas.models;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "usr_usuarios")
@@ -12,9 +15,12 @@ public class Usuario {
     private Long id;
 
     @Column(name = "usr_email", length = 100, nullable = false)
+    @NotNull(message = "O e-mail é obrigatório")
+    @Length(min = 5, max = 100, message = "O e-mail deve conter entre 5 e 100 caracteres")
     private String email;
 
     @Column(name = "usr_senha", length = 100, nullable = false)
+    @NotNull(message = "A senha é obrigatória")
     private String senha;
 
     public Long getId() {
