@@ -1,7 +1,9 @@
 package com.example.twgerenciadortarefas.controllers;
 
 import com.example.twgerenciadortarefas.models.Tarefa;
+import com.example.twgerenciadortarefas.models.Usuario;
 import com.example.twgerenciadortarefas.repositories.RepositorioTarefa;
+import com.example.twgerenciadortarefas.servicos.ServicoUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Date;
 
@@ -21,12 +24,16 @@ public class TarefasController {
     @Autowired
     private RepositorioTarefa repositorioTarefa;
 
+    @Autowired
+    private ServicoUsuario servicoUsuario;
+
     @GetMapping("/listar")
-    public ModelAndView listar() {
+    public ModelAndView listar(HttpServletRequest request) {
 
         ModelAndView mv = new ModelAndView();
         mv.setViewName("tarefas/listar");
-        mv.addObject("tarefas", repositorioTarefa.findAll());
+        String emailUsuario = request.getUserPrincipal().getName() ;
+        mv.addObject("tarefas", repositorioTarefa.carregarTarefasPorUsuario(emailUsuario));
         return mv;
     }
 
@@ -39,13 +46,16 @@ public class TarefasController {
     }
 
     @PostMapping("/inserir")
-    public ModelAndView inserir(@Valid Tarefa tarefa, BindingResult result) {
+    public ModelAndView inserir(@Valid Tarefa tarefa, BindingResult result, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         if(tarefa.getDataExpiracao()==null || tarefa.getDataExpiracao().before(new Date())){
             result.rejectValue("dataExpiracao","tarefa.dataExpiracaoInvalida",
                     "Data de expiração vazia ou menor que a data atual");
         }
         if(!result.hasErrors()){
+            String emailUsuario = request.getUserPrincipal().getName() ;
+            Usuario usuarioLogado = servicoUsuario.econtrarPorEmail(emailUsuario);
+            tarefa.setUsuario(usuarioLogado);
             mv.setViewName( "redirect:/tarefas/listar");
             repositorioTarefa.save(tarefa);
         }else{

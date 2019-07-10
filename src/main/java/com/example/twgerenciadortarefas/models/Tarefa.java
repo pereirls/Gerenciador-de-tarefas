@@ -1,5 +1,6 @@
 package com.example.twgerenciadortarefas.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,6 +32,10 @@ public class Tarefa {
 
     @Column(name = "tar_concluida",nullable = false)
     private Boolean concluida = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usr_id")
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -70,5 +75,13 @@ public class Tarefa {
 
     public void setConcluida(Boolean concluida) {
         this.concluida = concluida;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

@@ -1,9 +1,11 @@
 package com.example.twgerenciadortarefas.models;
 
+import javafx.beans.property.MapProperty;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "usr_usuarios")
@@ -22,6 +24,9 @@ public class Usuario {
     @Column(name = "usr_senha", length = 100, nullable = false)
     @NotNull(message = "A senha é obrigatória")
     private String senha;
+
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Tarefa> tarefas;
 
     public Long getId() {
         return id;
@@ -45,5 +50,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(List<Tarefa> tarefas) {
+        this.tarefas = tarefas;
     }
 }
