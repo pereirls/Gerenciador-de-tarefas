@@ -1,6 +1,5 @@
 package com.example.twgerenciadortarefas.models;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 

@@ -2,9 +2,7 @@ package com.example.twgerenciadortarefas.controllers;
 
 import com.example.twgerenciadortarefas.models.Usuario;
 import com.example.twgerenciadortarefas.servicos.ServicoUsuario;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
